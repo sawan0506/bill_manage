@@ -90,12 +90,6 @@ cd server
 npm run seed
 ```
 
-#### Default Credentials:
-| Role | Username | Phone | Password | Access |
-|---|---|---|---|---|
-| **Shop Owner (Admin)** | `admin` | `9876543210` | `Admin@12345` | Full access (Billing, Stock, Profit reports, Edit/Cancel bills, Settings) |
-| **Counter Staff** | `staff` | `9876543211` | `Staff@12345` | Billing, Product search, Customer ledger, Receive payments |
-
 ### Step 3: Run the Application
 
 In terminal 1 (Start Server):
