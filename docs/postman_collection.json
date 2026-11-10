@@ -1,0 +1,117 @@
+{
+  "info": {
+    "name": "Kisan Hardware Billing API",
+    "_postman_id": "c1f7a4e2-8924-4b53-911e-293817109201",
+    "description": "Postman Collection for Kisan Hardware & Sanitary Mart Billing and Inventory Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Login (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"identifier\": \"admin\",\n  \"password\": \"Admin@12345\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/v1/auth/login", "host": ["{{baseUrl}}"], "path": ["api", "v1", "auth", "login"] }
+          }
+        },
+        {
+          "name": "Get Current User Profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/v1/auth/me", "host": ["{{baseUrl}}"], "path": ["api", "v1", "auth", "me"] }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/v1/auth/logout", "host": ["{{baseUrl}}"], "path": ["api", "v1", "auth", "logout"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "List Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/v1/products?limit=25", "host": ["{{baseUrl}}"], "path": ["api", "v1", "products"], "query": [{ "key": "limit", "value": "25" }] }
+          }
+        },
+        {
+          "name": "Search Autocomplete",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/v1/products/autocomplete?q=pip", "host": ["{{baseUrl}}"], "path": ["api", "v1", "products", "autocomplete"], "query": [{ "key": "q", "value": "pip" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Billing",
+      "item": [
+        {
+          "name": "Create Bill",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "X-Requested-With", "value": "XMLHttpRequest" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerName\": \"Ramesh Patel\",\n  \"customerPhone\": \"9876500000\",\n  \"paymentMode\": \"Cash\",\n  \"items\": [\n    {\n      \"productId\": \"{{sampleProductId}}\",\n      \"quantity\": 2,\n      \"discountValue\": 0\n    }\n  ]\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/v1/bills", "host": ["{{baseUrl}}"], "path": ["api", "v1", "bills"] }
+          }
+        },
+        {
+          "name": "List Bills",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/v1/bills?limit=25", "host": ["{{baseUrl}}"], "path": ["api", "v1", "bills"], "query": [{ "key": "limit", "value": "25" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        {
+          "name": "Dashboard Overview Stats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/v1/reports/dashboard", "host": ["{{baseUrl}}"], "path": ["api", "v1", "reports", "dashboard"] }
+          }
+        },
+        {
+          "name": "Sales Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/v1/reports/sales", "host": ["{{baseUrl}}"], "path": ["api", "v1", "reports", "sales"] }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "sampleProductId", "value": "" }
+  ]
+}
